@@ -7,10 +7,9 @@ import { FtpClient, FtpConfig } from "./ftp-client.js";
 // Get FTP config from environment variables
 const ftpConfig: FtpConfig = {
   host: process.env.FTP_HOST || "localhost",
-  port: parseInt(process.env.FTP_PORT || "21"),
+  port: parseInt(process.env.FTP_PORT || "22"),
   user: process.env.FTP_USER || "anonymous",
-  password: process.env.FTP_PASSWORD || "",
-  secure: process.env.FTP_SECURE?.toLowerCase() === "true"
+  password: process.env.FTP_PASSWORD || ""
 };
 
 // Root path prefix (e.g., "/www" to make all paths relative to /www)
@@ -79,7 +78,7 @@ server.tool(
   },
   async ({ remotePath }) => {
     try {
-      const { content } = await ftpClient.downloadFile(resolvePath(remotePath));
+      const content = await ftpClient.downloadFile(resolvePath(remotePath));
       
       return {
         content: [

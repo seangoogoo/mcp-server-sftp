@@ -42,7 +42,7 @@ export class FtpClient {
         name: item.name,
         type: item.type === '-' ? "file" : item.type === 'd' ? "directory" : "other",
         size: item.size,
-        modifiedDate: item.modifyTime ? new Date(item.modifyTime * 1000).toISOString() : ""
+        modifiedDate: item.modifyTime ? new Date(item.modifyTime).toISOString() : ""
       }));
     });
   }

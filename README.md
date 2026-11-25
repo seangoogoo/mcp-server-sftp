@@ -107,10 +107,12 @@ If you encounter build issues on Windows:
 
 | Environment Variable | Description | Default |
 |---------------------|-------------|---------|
-| `FTP_HOST` | SFTP server hostname or IP address | localhost |
+| `FTP_HOST` | SFTP server hostname or IP address (required) | — |
 | `FTP_PORT` | SFTP server port | 22 |
-| `FTP_USER` | SFTP username | anonymous |
-| `FTP_PASSWORD` | SFTP password | (empty string) |
+| `FTP_USER` | SFTP username (required) | — |
+| `FTP_PASSWORD` | SFTP password (required) | — |
+
+The server exits at startup with an explicit error if a required variable is missing or empty.
 
 **Protocol:** This server speaks SFTP (SSH File Transfer Protocol) only. Connect on port 22 (default).
 

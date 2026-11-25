@@ -4,12 +4,19 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import { z } from "zod";
 import { FtpClient, FtpConfig } from "./ftp-client.js";
 
-// Get FTP config from environment variables
+// Get FTP config from environment variables. Fail fast on missing credentials:
+// silently defaulting them produces a misleading auth error at first use.
+const missing = ["FTP_HOST", "FTP_USER", "FTP_PASSWORD"].filter((name) => !process.env[name]);
+if (missing.length > 0) {
+  console.error(`mcp-server-sftp: missing or empty environment variable(s): ${missing.join(", ")}`);
+  process.exit(1);
+}
+
 const ftpConfig: FtpConfig = {
-  host: process.env.FTP_HOST || "localhost",
+  host: process.env.FTP_HOST!,
   port: parseInt(process.env.FTP_PORT || "22"),
-  user: process.env.FTP_USER || "anonymous",
-  password: process.env.FTP_PASSWORD || ""
+  user: process.env.FTP_USER!,
+  password: process.env.FTP_PASSWORD!
 };
 
 // Root path prefix (e.g., "/www" to make all paths relative to /www)

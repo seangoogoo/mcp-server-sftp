@@ -13,7 +13,6 @@ startCommand:
     properties:
       ftpHost:
         type: string
-        default: localhost
         description: SFTP server hostname or IP address
       ftpPort:
         type: number
@@ -21,11 +20,9 @@ startCommand:
         description: SFTP server port
       ftpUser:
         type: string
-        default: anonymous
         description: SFTP username
       ftpPassword:
         type: string
-        default: ""
         description: SFTP password
   commandFunction:
     # A JS function that produces the CLI command based on the given config to start the MCP on stdio.

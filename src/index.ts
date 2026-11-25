@@ -33,7 +33,7 @@ const ftpClient = new FtpClient(ftpConfig);
 // Create server instance
 const server = new McpServer({
   name: "mcp-server-ftp",
-  version: "1.0.0",
+  version: "1.2.0",
 });
 
 // Register list-directory tool

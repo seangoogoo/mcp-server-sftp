@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [1.2.0] - 2026-11-25
 
 ### Changed
 
@@ -14,6 +14,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 
 - Default values for `FTP_HOST` (`localhost`), `FTP_USER` (`anonymous`) and `FTP_PASSWORD` (empty string), in `src/index.ts`, `README.md` and `smithery.yaml`.
+
+### Fixed
+
+- `list-directory` modification dates: `modifyTime` from `ssh2-sftp-client` is already in milliseconds and was multiplied by 1000 again, producing dates far in the future.
 
 ## [1.1.0] - 2026-05-26
 
@@ -30,5 +34,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `FTP_SECURE` environment variable and the `secure` field on `FtpConfig`. `ssh2-sftp-client` is always SSH-encrypted, so the setting did nothing. Documentation in `README.md`, `smithery.yaml`, and `CLAUDE.md` updated accordingly.
 
-[Unreleased]: https://github.com/seangoogoo/mcp-server-sftp/compare/v1.1.0...HEAD
+[1.2.0]: https://github.com/seangoogoo/mcp-server-sftp/releases/tag/v1.2.0
 [1.1.0]: https://github.com/seangoogoo/mcp-server-sftp/releases/tag/v1.1.0
